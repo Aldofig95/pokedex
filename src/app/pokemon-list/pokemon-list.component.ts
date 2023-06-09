@@ -6,6 +6,9 @@ import { FavoritesService } from '../favorites.service';
 export interface Pokemon {
   name: string;
   url: string;
+  sprites: {
+    front_default: string;
+  };
 }
 
 @Component({
@@ -27,6 +30,7 @@ export class PokemonListComponent implements OnInit {
     const url = `https://pokeapi.co/api/v2/pokemon?limit=100&offset=${this.limit}`;
     this.http.get<any>(url).subscribe(data => {
       this.pokemonList = data.results;
+      console.log(this.pokemonList);
     });
   }
 
@@ -58,4 +62,9 @@ export class PokemonListComponent implements OnInit {
   isFavorite(pokemon: Pokemon): boolean {
     return this.favoritesService.isFavorite(pokemon);
   }
+
+  capitalizeFirstLetter(name: string): string {
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  }
+  
 }

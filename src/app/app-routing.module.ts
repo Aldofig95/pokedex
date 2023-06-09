@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'pokemon-list', pathMatch: 'full' },
   { path: 'pokemon-list', component: PokemonListComponent },
   { path: 'pokemon-detail/:id', component: PokemonDetailComponent },
-  { path: 'favorites', component: PokemonFavoritesComponent }
+  { path: 'favorites', component: PokemonFavoritesComponent },
+  { path: 'pokemon-list', component: PokemonListComponent },
 ];
 
 @NgModule({

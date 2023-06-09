@@ -1,7 +1,10 @@
 <h2>My Favorite Pokemons</h2>
-<ul>
-  <li *ngFor="let pokemon of favorites">
-    <a [routerLink]="['/pokemon-detail', getPokemonId(pokemon.url)]">{{ pokemon.name }}</a>
-    <button (click)="removeFavorite(pokemon)">Remove</button>
-  </li>
-</ul>
+<div class="favorites-list">
+  <div class="favorite-card" *ngFor="let pokemon of favorites">
+    <ul>
+      <a [routerLink]="['/pokemon-detail', getPokemonId(pokemon.url)]">{{ pokemon.name }}</a>
+      <button class="btn btn-primary mt-2" (click)="removeFavorite(pokemon)">Remove</button>
+    </ul>
+  </div>
+  <button class="btn btn-primary mt-2" routerLink="/pokemon-list">Back to Pokemon List</button>
+</div>

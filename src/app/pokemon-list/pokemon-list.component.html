@@ -1,9 +1,14 @@
 <h2>Pokemon List</h2>
-<button (click)="loadPreviousPokemon()" [disabled]="limit === 0">Previous</button>
-<button (click)="loadNextPokemon()">Next</button>
-<ul>
-  <li *ngFor="let pokemon of pokemonList">
-    <a [routerLink]="['/pokemon-detail', getPokemonId(pokemon.url)]">{{ pokemon.name }}</a>
-    <button (click)="addToFavorites(pokemon)" [disabled]="isFavorite(pokemon)">Add to Favorites</button>
-  </li>
-</ul>
+<button class="btn btn-primary mt-2" (click)="loadPreviousPokemon()" [disabled]="limit === 0">Previous</button>
+<button class="btn btn-primary mt-2" (click)="loadNextPokemon()">Next</button>
+
+<div class="row">
+  <div class="col-md-3 pokemon-item" *ngFor="let pokemon of pokemonList">
+    <div class="card">
+      <div class="card-body">
+        <a class="pokemon-name" [routerLink]="['/pokemon-detail', getPokemonId(pokemon.url)]">{{ pokemon.name | titlecase }}</a>
+        <button class="btn btn-primary mt-2" (click)="addToFavorites(pokemon)" [disabled]="isFavorite(pokemon)">Add to Favorites</button>
+      </div>
+    </div>
+  </div>
+</div>
