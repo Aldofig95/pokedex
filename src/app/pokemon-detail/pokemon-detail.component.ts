@@ -41,7 +41,6 @@ export class PokemonDetailComponent implements OnInit {
     const url = `https://pokeapi.co/api/v2/pokemon/${this.pokemonId}`;
     this.http.get<Pokemon>(url).subscribe(data => {
       this.pokemon = data;
-      console.log(this.pokemon)
     });
   }
   
