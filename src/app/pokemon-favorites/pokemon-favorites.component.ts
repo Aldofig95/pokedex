@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   templateUrl: './pokemon-favorites.component.html',
   styleUrls: ['./pokemon-favorites.component.sass']
 })
-
 export class PokemonFavoritesComponent implements OnInit {
   favorites: Pokemon[] = [];
 
@@ -19,16 +18,17 @@ export class PokemonFavoritesComponent implements OnInit {
   }
 
   async loadFavorites(): Promise<void> {
-    this.favorites = await this.favoritesService.getFavorites();
+    this.favorites = this.favoritesService.getFavorites();
   }
 
   addFavorite(pokemon: Pokemon): void {
+    this.favoritesService.addFavorite(pokemon);
     this.favorites.push(pokemon);
   }
 
   async removeFavorite(pokemon: Pokemon): Promise<void> {
-    await this.favoritesService.removeFavorite(pokemon);
-    this.loadFavorites();
+    this.favoritesService.removeFavorite(pokemon);
+    this.favorites = this.favorites.filter(fav => fav.name !== pokemon.name);
   }
 
   getFavorites(): Pokemon[] {
